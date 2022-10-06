@@ -1,11 +1,12 @@
 
 class Negociacao {
 
-    constructor(data, quantidade, valor) {  //O underline evidencia que essas propriedades só podem ser acessadas pelos próprios métodos da classe.
+    constructor(data, quantidade, valor) {  
 
-        this._data = data;
+        this._data = new Date(data.getTime());
         this._quantidade = quantidade;
         this._valor = valor;
+        Object.freeze(this); //congela as propriedades do objeto
     }
 
     get volume() {
@@ -13,7 +14,7 @@ class Negociacao {
     }
 
     get data() {
-        return this._data;
+        return new Date(this._data.getTime());
     }
 
     get quantidade() {
