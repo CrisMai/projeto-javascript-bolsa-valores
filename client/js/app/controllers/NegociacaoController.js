@@ -11,18 +11,16 @@ class NegociacaoController {
   adiciona(event) {
     event.preventDefault();
 
-    let data = new Date(... //(...) spread operator indica que o array será desmembrado.
-        this._inputData.value.split("-").map((item, indice) => item - indice % 2)); 
+    let helper = new DateHelper();
 
     let negociacao = new Negociacao(
-        data,
+      DateHelper.textoParaData(this._inputData.value),
         this._inputQuantidade.value,
-        this._inputValor
+        this._inputValor.value
     );
-
-    let diaMesAno = negociacao.data.getDate() + "/" + (negociacao.data.getMonth() + 1) + "/" +
-    negociacao.data.getFullYear();
-    console.log(diaMesAno);
+   
+    console.log(negociacao);
+    console.log(DateHelper.dataParaTexto(negociacao.data));
 
   }
   
